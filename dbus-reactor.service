@@ -4,8 +4,12 @@ PartOf=graphical-session.target
 After=graphical-session.target
 
 [Service]
+Type=simple
 ExecStart=/usr/local/bin/dbus-reactor
 Restart=always
 Environment=QT_QPA_PLATFORM=wayland
 Environment=WAYLAND_DISPLAY=wayland-0
 Environment=XDG_RUNTIME_DIR=/run/user/1000
+
+[Install]
+WantedBy=graphical-session.target
