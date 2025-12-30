@@ -27,6 +27,18 @@ Output: 1 ...
 
 In this case i have `2880x1800@120.00!` and `2:2880x1800@60.00*`. Which are perfect for power safe and performance. So the power mode should switch with `kscreen-doctor output.1.mode.2` where 1 is the id of the Output and 2 is the id of the mode
 
+With your favorite editor, edit `~/.config/dbus-reactor/config.toml` 
+
+in my case the content is
+```
+[kde_power]
+balanced_mode = "output.1.mode.1"
+performance_mode = "output.1.mode.1"
+power_saver_mode = "output.1.mode.2"
+```
+
+If the file is missing run `/usr/local/bin/dbus-reactor --config`
+
 ### As service
 
 Modify service to use current user
