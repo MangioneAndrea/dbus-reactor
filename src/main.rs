@@ -90,7 +90,7 @@ trait Configurable: Sized {
 
     fn get_configs(&self) -> &Self::Configs;
 
-    async fn configure(self) -> Self;
+    async fn configure(self) -> Result<Self, String>;
 
     fn new_with_config(configs: Self::Configs) -> Self;
 
@@ -119,6 +119,7 @@ async fn config(_: Args) {
         .await
         .configure()
         .await
+        .unwrap()
         .persist()
         .await;
 }
